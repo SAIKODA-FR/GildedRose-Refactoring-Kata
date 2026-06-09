@@ -9,7 +9,7 @@ public class Program
     {
         Console.WriteLine("OMGHAI!");
 
-        IList<Item> items = new List<Item>
+        IList<IItem> items = new List<IItem>
         {
             new Item ("+5 Dexterity Vest", 10, 20),
             new Item ("Aged Brie", 2, 0),
