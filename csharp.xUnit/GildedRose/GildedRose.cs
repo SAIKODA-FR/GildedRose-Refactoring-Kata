@@ -18,17 +18,13 @@ public class GildedRose
 
     public void UpdateQuality()
     {
-        for (var i = 0; i < Items.Count; i++)
+        foreach (var item in Items)
         {
-            var item = Items[i];
             if (item.Name != AgedBrie && item.Name != BackStage)
             {
-                if (item.Quality > 0)
+                if (item.Name != Sulfuras)
                 {
-                    if (item.Name != Sulfuras)
-                    {
-                        DecreaseQuality(item);
-                    }
+                    DecreaseQuality(item);
                 }
             }
             else
@@ -60,7 +56,7 @@ public class GildedRose
 
             if (item.Name != Sulfuras)
             {
-                item.SellIn = item.SellIn - 1;
+                DecreaseSellin(item);
             }
 
             if (item.SellIn < 0)
@@ -69,17 +65,14 @@ public class GildedRose
                 {
                     if (item.Name != BackStage)
                     {
-                        if (item.Quality > 0)
+                        if (item.Name != Sulfuras)
                         {
-                            if (item.Name != Sulfuras)
-                            {
-                                DecreaseQuality(item);
-                            }
+                           DecreaseQuality(item);
                         }
                     }
                     else
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        ResetQuality(item);
                     }
                 }
                 else
@@ -93,6 +86,16 @@ public class GildedRose
         }
     }
 
+    private static void ResetQuality(Item item)
+    {
+        item.Quality = item.Quality - item.Quality;
+    }
+
+    private static void DecreaseSellin(Item item)
+    {
+        item.SellIn = item.SellIn - 1;
+    }
+
     private void IncreaseQuality(Item item)
     {
         item.Quality = item.Quality + 1;
@@ -100,6 +103,9 @@ public class GildedRose
 
     private void DecreaseQuality(Item item)
     {
-        item.Quality = item.Quality - 1;
+        if (item.Quality > 0)
+        {
+            item.Quality = item.Quality - 1;
+        }
     }
 }
