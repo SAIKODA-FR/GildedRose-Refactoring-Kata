@@ -34,7 +34,7 @@ public class GildedRose
             {
                 if (Items[i].Quality < MaxQuality)
                 {
-                    Items[i].Quality = Items[i].Quality + 1;
+                    IncreaseQuality(i);
 
                     if (Items[i].Name == BackStage)
                     {
@@ -42,7 +42,7 @@ public class GildedRose
                         {
                             if (Items[i].Quality < MaxQuality)
                             {
-                                Items[i].Quality = Items[i].Quality + 1;
+                                IncreaseQuality(i);
                             }
                         }
 
@@ -50,7 +50,7 @@ public class GildedRose
                         {
                             if (Items[i].Quality < MaxQuality)
                             {
-                                Items[i].Quality = Items[i].Quality + 1;
+                                IncreaseQuality(i);
                             }
                         }
                     }
@@ -85,11 +85,16 @@ public class GildedRose
                 {
                     if (Items[i].Quality < MaxQuality)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        IncreaseQuality(i);
                     }
                 }
             }
         }
+    }
+
+    private void IncreaseQuality(int i)
+    {
+        Items[i].Quality = Items[i].Quality + 1;
     }
 
     private void DecreaseQuality(int i)
