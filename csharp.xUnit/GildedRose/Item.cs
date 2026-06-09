@@ -18,4 +18,14 @@ public class Item
             Quality = Quality - 1;
         }
     }
+
+    public void DecreaseSellin()
+    {
+        SellIn = SellIn - 1;
+    }
+
+    public void IncreaseQuality()
+    {
+        Quality = Quality + 1;
+    }
 }

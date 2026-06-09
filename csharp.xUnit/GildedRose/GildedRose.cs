@@ -37,7 +37,7 @@ public class GildedRose
         {
             if (item.Quality < MaxQuality)
             {
-                IncreaseQuality(item);
+                item.IncreaseQuality();
 
                 if (item.Name == BackStage)
                 {
@@ -45,7 +45,7 @@ public class GildedRose
                     {
                         if (item.Quality < MaxQuality)
                         {
-                            IncreaseQuality(item);
+                            item.IncreaseQuality();
                         }
                     }
 
@@ -53,7 +53,7 @@ public class GildedRose
                     {
                         if (item.Quality < MaxQuality)
                         {
-                            IncreaseQuality(item);
+                            item.IncreaseQuality();
                         }
                     }
                 }
@@ -62,7 +62,7 @@ public class GildedRose
 
         if (item.Name != Sulfuras)
         {
-            DecreaseSellin(item);
+            item.DecreaseSellin();
         }
 
         if (item.SellIn < 0)
@@ -85,21 +85,9 @@ public class GildedRose
             {
                 if (item.Quality < MaxQuality)
                 {
-                    IncreaseQuality(item);
+                    item.IncreaseQuality();
                 }
             }
         }
-    }
-
-    private static void DecreaseSellin(Item item)
-    {
-        item.SellIn = item.SellIn - 1;
-    }
-
-    private void IncreaseQuality(Item item)
-    {
-        item.Quality = item.Quality + 1;
-    }
-
-    
+    }    
 }
