@@ -20,11 +20,65 @@ public class GildedRose
     {
         foreach (var item in Items)
         {
-            if (item.Name != AgedBrie && item.Name != BackStage)
+            UpdateQualityAndSellin(item);
+        }
+    }
+
+    private void UpdateQualityAndSellin(Item item)
+    {
+        if (item.Name != AgedBrie && item.Name != BackStage)
+        {
+            if (item.Name != Sulfuras)
             {
-                if (item.Name != Sulfuras)
+                DecreaseQuality(item);
+            }
+        }
+        else
+        {
+            if (item.Quality < MaxQuality)
+            {
+                IncreaseQuality(item);
+
+                if (item.Name == BackStage)
                 {
-                    DecreaseQuality(item);
+                    if (item.SellIn < 11)
+                    {
+                        if (item.Quality < MaxQuality)
+                        {
+                            IncreaseQuality(item);
+                        }
+                    }
+
+                    if (item.SellIn < 6)
+                    {
+                        if (item.Quality < MaxQuality)
+                        {
+                            IncreaseQuality(item);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (item.Name != Sulfuras)
+        {
+            DecreaseSellin(item);
+        }
+
+        if (item.SellIn < 0)
+        {
+            if (item.Name != AgedBrie)
+            {
+                if (item.Name != BackStage)
+                {
+                    if (item.Name != Sulfuras)
+                    {
+                        DecreaseQuality(item);
+                    }
+                }
+                else
+                {
+                    ResetQuality(item);
                 }
             }
             else
@@ -32,55 +86,6 @@ public class GildedRose
                 if (item.Quality < MaxQuality)
                 {
                     IncreaseQuality(item);
-
-                    if (item.Name == BackStage)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < MaxQuality)
-                            {
-                                IncreaseQuality(item);
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < MaxQuality)
-                            {
-                                IncreaseQuality(item);
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (item.Name != Sulfuras)
-            {
-                DecreaseSellin(item);
-            }
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name != AgedBrie)
-                {
-                    if (item.Name != BackStage)
-                    {
-                        if (item.Name != Sulfuras)
-                        {
-                           DecreaseQuality(item);
-                        }
-                    }
-                    else
-                    {
-                        ResetQuality(item);
-                    }
-                }
-                else
-                {
-                    if (item.Quality < MaxQuality)
-                    {
-                        IncreaseQuality(item);
-                    }
                 }
             }
         }
