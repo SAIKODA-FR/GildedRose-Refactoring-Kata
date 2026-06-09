@@ -78,7 +78,7 @@ public class GildedRose
                 }
                 else
                 {
-                    ResetQuality(item);
+                    item.ResetQuality();
                 }
             }
             else
@@ -89,11 +89,6 @@ public class GildedRose
                 }
             }
         }
-    }
-
-    private static void ResetQuality(Item item)
-    {
-        item.Quality = item.Quality - item.Quality;
     }
 
     private static void DecreaseSellin(Item item)
