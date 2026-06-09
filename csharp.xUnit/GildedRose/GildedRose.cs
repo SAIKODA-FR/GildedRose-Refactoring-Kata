@@ -4,6 +4,7 @@ namespace GildedRoseKata;
 
 public class GildedRose
 {
+    private const string AgedBrie = "Aged Brie";
     IList<Item> Items;
 
     public GildedRose(IList<Item> Items)
@@ -15,7 +16,7 @@ public class GildedRose
     {
         for (var i = 0; i < Items.Count; i++)
         {
-            if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+            if (Items[i].Name != AgedBrie && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
             {
                 if (Items[i].Quality > 0)
                 {
@@ -59,7 +60,7 @@ public class GildedRose
 
             if (Items[i].SellIn < 0)
             {
-                if (Items[i].Name != "Aged Brie")
+                if (Items[i].Name != AgedBrie)
                 {
                     if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                     {
