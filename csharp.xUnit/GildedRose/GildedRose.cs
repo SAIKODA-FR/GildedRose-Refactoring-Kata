@@ -7,6 +7,8 @@ public class GildedRose
     private const string AgedBrie = "Aged Brie";
     private const string BackStage = "Backstage passes to a TAFKAL80ETC concert";
     private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+    private const int MaxQuality = 50;
+
     IList<Item> Items;
 
     public GildedRose(IList<Item> Items)
@@ -24,13 +26,13 @@ public class GildedRose
                 {
                     if (Items[i].Name != Sulfuras)
                     {
-                        Items[i].Quality = Items[i].Quality - 1;
+                        DecreaseQuality(i);
                     }
                 }
             }
             else
             {
-                if (Items[i].Quality < 50)
+                if (Items[i].Quality < MaxQuality)
                 {
                     Items[i].Quality = Items[i].Quality + 1;
 
@@ -38,7 +40,7 @@ public class GildedRose
                     {
                         if (Items[i].SellIn < 11)
                         {
-                            if (Items[i].Quality < 50)
+                            if (Items[i].Quality < MaxQuality)
                             {
                                 Items[i].Quality = Items[i].Quality + 1;
                             }
@@ -46,7 +48,7 @@ public class GildedRose
 
                         if (Items[i].SellIn < 6)
                         {
-                            if (Items[i].Quality < 50)
+                            if (Items[i].Quality < MaxQuality)
                             {
                                 Items[i].Quality = Items[i].Quality + 1;
                             }
@@ -70,7 +72,7 @@ public class GildedRose
                         {
                             if (Items[i].Name != Sulfuras)
                             {
-                                Items[i].Quality = Items[i].Quality - 1;
+                                DecreaseQuality(i);
                             }
                         }
                     }
@@ -81,12 +83,17 @@ public class GildedRose
                 }
                 else
                 {
-                    if (Items[i].Quality < 50)
+                    if (Items[i].Quality < MaxQuality)
                     {
                         Items[i].Quality = Items[i].Quality + 1;
                     }
                 }
             }
         }
+    }
+
+    private void DecreaseQuality(int i)
+    {
+        Items[i].Quality = Items[i].Quality - 1;
     }
 }
