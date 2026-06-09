@@ -20,65 +20,76 @@ public class GildedRose
     {
         foreach (var item in Items)
         {
-            UpdateQualityAndSellin(item);
+            if (item.Name == Sulfuras)
+            {
+
+            }
+            else
+            {
+                UpdateQualityAndSellin(item);
+            }
         }
+    }
+
+    private void UpdateQualityAndSellinSulfuras(Item item)
+    {
+
     }
 
     private void UpdateQualityAndSellin(Item item)
     {
-        if (item.Name == AgedBrie || item.Name == BackStage)
+        if (item.Name == AgedBrie)
         {
-            HandleBrieAndBackStage(item);
+            HandleBrie(item);
+        }
+        else if (item.Name == BackStage)
+        {
+            HandleBackStage(item);
         }
         else
         {
-            if (item.Name != Sulfuras)
-            {
-                item.DecreaseQuality();
-            }
+            item.DecreaseQuality();
         }
 
-        if (item.Name != Sulfuras)
-        {
-            item.DecreaseSellin();
-        }
+        item.DecreaseSellin();
 
         if (item.SellIn < 0)
         {
-            if (item.Name != AgedBrie)
-            {
-                if (item.Name != BackStage)
-                {
-                    if (item.Name != Sulfuras)
-                    {
-                        item.DecreaseQuality();
-                    }
-                }
-                else
-                {
-                    item.ResetQuality();
-                }
-            }
-            else
+            if (item.Name == AgedBrie)
             {
                 if (item.Quality < MaxQuality)
                 {
                     item.IncreaseQuality();
                 }
             }
+            else
+            {
+                if (item.Name == BackStage)
+                {
+                    item.ResetQuality();
+                }
+                else
+                {
+                    item.DecreaseQuality();
+                }
+            }
         }
     }
 
-    private static void HandleBrieAndBackStage(Item item)
+    private static void HandleBrie(Item item)
     {
         if (item.Quality < MaxQuality)
         {
             item.IncreaseQuality();
+        }
+    }
 
-            if (item.Name == BackStage)
-            {
-                HandleBackStageQuality(item);
-            }
+    private static void HandleBackStage(Item item)
+    {
+        if (item.Quality < MaxQuality)
+        {
+            item.IncreaseQuality();
+            HandleBackStageQuality(item);
         }
     }
 
