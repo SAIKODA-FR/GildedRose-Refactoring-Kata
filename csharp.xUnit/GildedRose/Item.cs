@@ -60,6 +60,8 @@ public class Item : IItem
         UpdateQualityAndSellin();
     }
 
+
+
     private void UpdateQualityAndSellin()
     {
         DecreaseQuality();
