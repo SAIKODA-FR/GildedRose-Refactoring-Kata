@@ -20,85 +20,86 @@ public class GildedRose
     {
         for (var i = 0; i < Items.Count; i++)
         {
-            if (Items[i].Name != AgedBrie && Items[i].Name != BackStage)
+            var item = Items[i];
+            if (item.Name != AgedBrie && item.Name != BackStage)
             {
-                if (Items[i].Quality > 0)
+                if (item.Quality > 0)
                 {
-                    if (Items[i].Name != Sulfuras)
+                    if (item.Name != Sulfuras)
                     {
-                        DecreaseQuality(i);
+                        DecreaseQuality(item);
                     }
                 }
             }
             else
             {
-                if (Items[i].Quality < MaxQuality)
+                if (item.Quality < MaxQuality)
                 {
-                    IncreaseQuality(i);
+                    IncreaseQuality(item);
 
-                    if (Items[i].Name == BackStage)
+                    if (item.Name == BackStage)
                     {
-                        if (Items[i].SellIn < 11)
+                        if (item.SellIn < 11)
                         {
-                            if (Items[i].Quality < MaxQuality)
+                            if (item.Quality < MaxQuality)
                             {
-                                IncreaseQuality(i);
+                                IncreaseQuality(item);
                             }
                         }
 
-                        if (Items[i].SellIn < 6)
+                        if (item.SellIn < 6)
                         {
-                            if (Items[i].Quality < MaxQuality)
+                            if (item.Quality < MaxQuality)
                             {
-                                IncreaseQuality(i);
+                                IncreaseQuality(item);
                             }
                         }
                     }
                 }
             }
 
-            if (Items[i].Name != Sulfuras)
+            if (item.Name != Sulfuras)
             {
-                Items[i].SellIn = Items[i].SellIn - 1;
+                item.SellIn = item.SellIn - 1;
             }
 
-            if (Items[i].SellIn < 0)
+            if (item.SellIn < 0)
             {
-                if (Items[i].Name != AgedBrie)
+                if (item.Name != AgedBrie)
                 {
-                    if (Items[i].Name != BackStage)
+                    if (item.Name != BackStage)
                     {
-                        if (Items[i].Quality > 0)
+                        if (item.Quality > 0)
                         {
-                            if (Items[i].Name != Sulfuras)
+                            if (item.Name != Sulfuras)
                             {
-                                DecreaseQuality(i);
+                                DecreaseQuality(item);
                             }
                         }
                     }
                     else
                     {
-                        Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                        item.Quality = item.Quality - item.Quality;
                     }
                 }
                 else
                 {
-                    if (Items[i].Quality < MaxQuality)
+                    if (item.Quality < MaxQuality)
                     {
-                        IncreaseQuality(i);
+                        IncreaseQuality(item);
                     }
                 }
             }
         }
     }
 
-    private void IncreaseQuality(int i)
+    private void IncreaseQuality(Item item)
     {
-        Items[i].Quality = Items[i].Quality + 1;
+        item.Quality = item.Quality + 1;
     }
 
-    private void DecreaseQuality(int i)
+    private void DecreaseQuality(Item item)
     {
-        Items[i].Quality = Items[i].Quality - 1;
+        item.Quality = item.Quality - 1;
     }
 }
