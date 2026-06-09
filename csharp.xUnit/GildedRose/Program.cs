@@ -12,7 +12,7 @@ public class Program
         IList<IItem> items = new List<IItem>
         {
             new Item ("+5 Dexterity Vest", 10, 20),
-            new Item ("Aged Brie", 2, 0),
+            new BrieItem ("Aged Brie", 2, 0),
             new Item ("Elixir of the Mongoose", 5, 7),
             new SulfurasItem ("Sulfuras, Hand of Ragnaros", 0, 80),
             new SulfurasItem ("Sulfuras, Hand of Ragnaros", -1, 80),

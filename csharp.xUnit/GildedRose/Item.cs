@@ -43,15 +43,6 @@ public class Item : IItem
 
     public void UpdateQuality()
     {
-        if (Name == Sulfuras)
-        {
-            return;
-        }
-        if (Name == AgedBrie)
-        {
-            UpdateQualityAndSellinBrie();
-            return;
-        }
         if (Name == BackStage)
         {
             UpdateQualityAndSellinBackStage();
@@ -59,8 +50,6 @@ public class Item : IItem
         }
         UpdateQualityAndSellin();
     }
-
-
 
     private void UpdateQualityAndSellin()
     {
@@ -102,24 +91,6 @@ public class Item : IItem
         if (SellIn < 0)
         {
             ResetQuality();
-        }
-    }
-
-    private void UpdateQualityAndSellinBrie()
-    {
-        if (Quality < MaxQuality)
-        {
-            IncreaseQuality();
-        }
-
-        DecreaseSellin();
-
-        if (SellIn < 0)
-        {
-            if (Quality < MaxQuality)
-            {
-                IncreaseQuality();
-            }
         }
     }
 }
