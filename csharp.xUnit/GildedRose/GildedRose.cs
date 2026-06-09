@@ -30,7 +30,7 @@ public class GildedRose
         {
             if (item.Name != Sulfuras)
             {
-                DecreaseQuality(item);
+                item.DecreaseQuality();
             }
         }
         else
@@ -73,7 +73,7 @@ public class GildedRose
                 {
                     if (item.Name != Sulfuras)
                     {
-                        DecreaseQuality(item);
+                        item.DecreaseQuality();
                     }
                 }
                 else
@@ -101,11 +101,5 @@ public class GildedRose
         item.Quality = item.Quality + 1;
     }
 
-    private void DecreaseQuality(Item item)
-    {
-        if (item.Quality > 0)
-        {
-            item.Quality = item.Quality - 1;
-        }
-    }
+    
 }
