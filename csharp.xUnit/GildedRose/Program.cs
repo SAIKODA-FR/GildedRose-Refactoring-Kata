@@ -9,8 +9,8 @@ public class Program
     {
         Console.WriteLine("OMGHAI!");
 
-        IList<IItem> items = new List<IItem>
-        {
+        IList<IItem> items =
+        [
             new Item ("+5 Dexterity Vest", 10, 20),
             new BrieItem ("Aged Brie", 2, 0),
             new Item ("Elixir of the Mongoose", 5, 7),
@@ -36,7 +36,7 @@ public class Program
             ),
             // this conjured item does not work properly yet
             new Item ("Conjured Mana Cake", 3, 6)
-        };
+        ];
 
         var app = new GildedRose(items);
 

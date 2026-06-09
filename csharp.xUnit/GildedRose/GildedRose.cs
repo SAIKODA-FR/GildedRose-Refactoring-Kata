@@ -2,14 +2,9 @@
 
 namespace GildedRoseKata;
 
-public class GildedRose
+public class GildedRose(IList<IItem> Items)
 {
-    IList<IItem> Items;
-
-    public GildedRose(IList<IItem> Items)
-    {
-        this.Items = Items;
-    }
+    readonly IList<IItem> Items = Items;
 
     public void UpdateQuality()
     {
@@ -18,7 +13,4 @@ public class GildedRose
             item.UpdateQuality();
         }
     }
-
-    
-
 }
