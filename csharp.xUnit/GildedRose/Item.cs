@@ -2,11 +2,6 @@
 
 public class Item : IItem
 {
-    private const string AgedBrie = "Aged Brie";
-    private const string BackStage = "Backstage passes to a TAFKAL80ETC concert";
-    private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
-    private const int MaxQuality = 50;
-
     public string Name { get; set; }
     public int SellIn { get; set; }
     public int Quality { get; set; }
@@ -36,22 +31,7 @@ public class Item : IItem
         SellIn = SellIn - 1;
     }
 
-    private void IncreaseQuality()
-    {
-        Quality = Quality + 1;
-    }
-
     public void UpdateQuality()
-    {
-        if (Name == BackStage)
-        {
-            UpdateQualityAndSellinBackStage();
-            return;
-        }
-        UpdateQualityAndSellin();
-    }
-
-    private void UpdateQualityAndSellin()
     {
         DecreaseQuality();
 
@@ -60,37 +40,6 @@ public class Item : IItem
         if (SellIn < 0)
         {
             DecreaseQuality();
-        }
-    }
-
-    private void UpdateQualityAndSellinBackStage()
-    {
-        if (Quality < MaxQuality)
-        {
-            IncreaseQuality();
-
-            if (SellIn < 11)
-            {
-                if (Quality < MaxQuality)
-                {
-                    IncreaseQuality();
-                }
-            }
-
-            if (SellIn < 6)
-            {
-                if (Quality < MaxQuality)
-                {
-                    IncreaseQuality();
-                }
-            }
-        }
-
-        DecreaseSellin();
-
-        if (SellIn < 0)
-        {
-            ResetQuality();
         }
     }
 }
