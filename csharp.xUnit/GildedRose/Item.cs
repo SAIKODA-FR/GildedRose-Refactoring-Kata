@@ -1,6 +1,6 @@
 ﻿namespace GildedRoseKata;
 
-public class Item
+public class Item : IItem
 {
     private const string AgedBrie = "Aged Brie";
     private const string BackStage = "Backstage passes to a TAFKAL80ETC concert";
@@ -11,12 +11,19 @@ public class Item
     public int SellIn { get; set; }
     public int Quality { get; set; }
 
-    public void ResetQuality()
+    public Item(string name, int sellIn, int quality)
+    {
+        Name = name;
+        SellIn = sellIn;
+        Quality = quality;
+    }
+
+    private void ResetQuality()
     {
         Quality = 0;
     }
 
-    public void DecreaseQuality()
+    private void DecreaseQuality()
     {
         if (Quality > 0)
         {
@@ -24,12 +31,12 @@ public class Item
         }
     }
 
-    public void DecreaseSellin()
+    private void DecreaseSellin()
     {
         SellIn = SellIn - 1;
     }
 
-    public void IncreaseQuality()
+    private void IncreaseQuality()
     {
         Quality = Quality + 1;
     }
@@ -51,11 +58,6 @@ public class Item
             return;
         }
         UpdateQualityAndSellin();
-    }
-
-    private void UpdateQualityAndSellinSulfuras()
-    {
-
     }
 
     private void UpdateQualityAndSellin()
