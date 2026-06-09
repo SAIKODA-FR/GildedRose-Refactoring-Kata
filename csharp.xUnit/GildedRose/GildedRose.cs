@@ -29,6 +29,11 @@ public class GildedRose
                 UpdateQualityAndSellinBrie(item);
                 continue;
             }
+            if (item.Name == BackStage)
+            {
+                UpdateQualityAndSellinBackStage(item);
+                continue;
+            }
             UpdateQualityAndSellin(item);
         }
     }
@@ -40,34 +45,54 @@ public class GildedRose
 
     private void UpdateQualityAndSellin(Item item)
     {
-        
-        if (item.Name == BackStage)
-        {
-            HandleBackStage(item);
-        }
-        else
+        item.DecreaseQuality();
+
+        item.DecreaseSellin();
+
+        if (item.SellIn < 0)
         {
             item.DecreaseQuality();
+        }
+    }
+
+    private void UpdateQualityAndSellinBackStage(Item item)
+    {
+        if (item.Quality < MaxQuality)
+        {
+            item.IncreaseQuality();
+
+            if (item.SellIn < 11)
+            {
+                if (item.Quality < MaxQuality)
+                {
+                    item.IncreaseQuality();
+                }
+            }
+
+            if (item.SellIn < 6)
+            {
+                if (item.Quality < MaxQuality)
+                {
+                    item.IncreaseQuality();
+                }
+            }
         }
 
         item.DecreaseSellin();
 
         if (item.SellIn < 0)
         {
-            if (item.Name == BackStage)
-            {
-                item.ResetQuality();
-            }
-            else
-            {
-                item.DecreaseQuality();
-            }
+            item.ResetQuality();
         }
     }
 
     private void UpdateQualityAndSellinBrie(Item item)
     {
-        HandleBrie(item);
+        if (item.Quality < MaxQuality)
+        {
+            item.IncreaseQuality();
+        }
+
         item.DecreaseSellin();
 
         if (item.SellIn < 0)
@@ -79,39 +104,4 @@ public class GildedRose
         }
     }
 
-    private static void HandleBrie(Item item)
-    {
-        if (item.Quality < MaxQuality)
-        {
-            item.IncreaseQuality();
-        }
-    }
-
-    private static void HandleBackStage(Item item)
-    {
-        if (item.Quality < MaxQuality)
-        {
-            item.IncreaseQuality();
-            HandleBackStageQuality(item);
-        }
-    }
-
-    private static void HandleBackStageQuality(Item item)
-    {
-        if (item.SellIn < 11)
-        {
-            if (item.Quality < MaxQuality)
-            {
-                item.IncreaseQuality();
-            }
-        }
-
-        if (item.SellIn < 6)
-        {
-            if (item.Quality < MaxQuality)
-            {
-                item.IncreaseQuality();
-            }
-        }
-    }
 }
