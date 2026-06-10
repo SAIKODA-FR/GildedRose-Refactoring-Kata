@@ -13,7 +13,7 @@ namespace GildedRoseTests;
 
 public class ApprovalTest
 {
-    
+
     [Fact]
     public Task ThirtyDays()
     {
