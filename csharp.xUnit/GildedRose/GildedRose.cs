@@ -19,6 +19,11 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
+            if (item.Name == Sulfuras)
+            {
+                UpdateSulfurasQuality(item);
+                continue;
+            }
             UpdateItemQuality(item);
         }
     }
@@ -29,13 +34,7 @@ public class GildedRose
         {
             if (item.Quality > 0)
             {
-                if (item.Name == Sulfuras)
-                {
-                }
-                else
-                {
-                    DecreaseQuality(item);
-                }
+                DecreaseQuality(item);
             }
         }
         else
@@ -64,14 +63,7 @@ public class GildedRose
                 }
             }
         }
-
-        if (item.Name == Sulfuras)
-        {
-        }
-        else
-        {
-            DecreaseSellin(item);
-        }
+        DecreaseSellin(item);
 
         if (item.SellIn < 0)
         {
@@ -81,12 +73,7 @@ public class GildedRose
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name == Sulfuras)
-                        {
-                        }
-                        else {
-                            DecreaseQuality(item);
-                        }
+                        DecreaseQuality(item);
                     }
                 }
                 else
@@ -102,6 +89,10 @@ public class GildedRose
                 }
             }
         }
+    }
+
+    private static void UpdateSulfurasQuality(Item item)
+    {
     }
 
     private static void DecreaseSellin(Item item)
