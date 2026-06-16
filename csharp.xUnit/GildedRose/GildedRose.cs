@@ -29,6 +29,11 @@ public class GildedRose
                 UpdateBackStageQuality(item);
                 continue;
             }
+            if (item.Name == AgedBrie)
+            {
+                UpdateBrieQuality(item);
+                continue;
+            }
             UpdateItemQuality(item);
         }
     }
@@ -39,22 +44,19 @@ public class GildedRose
         {
             IncreaseQuality(item);
 
-            if (item.Name == BackStage)
+            if (item.SellIn <= 10)
             {
-                if (item.SellIn <= 10)
+                if (item.Quality < MAX_QUALITY)
                 {
-                    if (item.Quality < MAX_QUALITY)
-                    {
-                        IncreaseQuality(item);
-                    }
+                    IncreaseQuality(item);
                 }
+            }
 
-                if (item.SellIn <= 5)
+            if (item.SellIn <= 5)
+            {
+                if (item.Quality < MAX_QUALITY)
                 {
-                    if (item.Quality < MAX_QUALITY)
-                    {
-                        IncreaseQuality(item);
-                    }
+                    IncreaseQuality(item);
                 }
             }
         }
@@ -67,39 +69,39 @@ public class GildedRose
         }
     }
 
-    private static void UpdateItemQuality(Item item)
+    private static void UpdateBrieQuality(Item item)
     {
-        if (item.Name == AgedBrie)
+        if (item.Quality < MAX_QUALITY)
+        {
+            IncreaseQuality(item);
+        }
+
+        DecreaseSellin(item);
+
+        if (item.SellIn < 0)
         {
             if (item.Quality < MAX_QUALITY)
             {
                 IncreaseQuality(item);
             }
         }
-        else
+    }
+
+    private static void UpdateItemQuality(Item item)
+    {
+
+        if (item.Quality > 0)
         {
-            if (item.Quality > 0)
-            {
-                DecreaseQuality(item);
-            }
+            DecreaseQuality(item);
         }
+
         DecreaseSellin(item);
 
         if (item.SellIn < 0)
         {
-            if (item.Name != AgedBrie)
+            if (item.Quality > 0)
             {
-                if (item.Quality > 0)
-                {
-                    DecreaseQuality(item);
-                }
-            }
-            else
-            {
-                if (item.Quality < MAX_QUALITY)
-                {
-                    IncreaseQuality(item);
-                }
+                DecreaseQuality(item);
             }
         }
     }
