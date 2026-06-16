@@ -40,25 +40,17 @@ public class GildedRose
 
     private static void UpdateBackStageQuality(Item item)
     {
-        if (item.Quality < MAX_QUALITY)
+        
+        IncreaseQuality(item);
+        
+        if (item.SellIn <= 10)
         {
             IncreaseQuality(item);
+        }
 
-            if (item.SellIn <= 10)
-            {
-                if (item.Quality < MAX_QUALITY)
-                {
-                    IncreaseQuality(item);
-                }
-            }
-
-            if (item.SellIn <= 5)
-            {
-                if (item.Quality < MAX_QUALITY)
-                {
-                    IncreaseQuality(item);
-                }
-            }
+        if (item.SellIn <= 5)
+        {
+           IncreaseQuality(item);
         }
 
         DecreaseSellin(item);
@@ -71,19 +63,13 @@ public class GildedRose
 
     private static void UpdateBrieQuality(Item item)
     {
-        if (item.Quality < MAX_QUALITY)
-        {
-            IncreaseQuality(item);
-        }
+        IncreaseQuality(item);
 
         DecreaseSellin(item);
 
         if (item.SellIn < 0)
         {
-            if (item.Quality < MAX_QUALITY)
-            {
-                IncreaseQuality(item);
-            }
+           IncreaseQuality(item);
         }
     }
 
@@ -118,7 +104,10 @@ public class GildedRose
 
     private static void IncreaseQuality(Item item)
     {
-        item.Quality = item.Quality + 1;
+        if (item.Quality < MAX_QUALITY)
+        {
+            item.Quality = item.Quality + 1;
+        }
     }
 
     private static void DecreaseQuality(Item item)
