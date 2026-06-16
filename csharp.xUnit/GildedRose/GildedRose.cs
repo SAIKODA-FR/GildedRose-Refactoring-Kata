@@ -24,43 +24,63 @@ public class GildedRose
                 UpdateSulfurasQuality(item);
                 continue;
             }
+            if (item.Name == BackStage)
+            {
+                UpdateBackStageQuality(item);
+                continue;
+            }
             UpdateItemQuality(item);
+        }
+    }
+
+    private static void UpdateBackStageQuality(Item item)
+    {
+        if (item.Quality < MAX_QUALITY)
+        {
+            IncreaseQuality(item);
+
+            if (item.Name == BackStage)
+            {
+                if (item.SellIn <= 10)
+                {
+                    if (item.Quality < MAX_QUALITY)
+                    {
+                        IncreaseQuality(item);
+                    }
+                }
+
+                if (item.SellIn <= 5)
+                {
+                    if (item.Quality < MAX_QUALITY)
+                    {
+                        IncreaseQuality(item);
+                    }
+                }
+            }
+        }
+
+        DecreaseSellin(item);
+
+        if (item.SellIn < 0)
+        {
+            item.Quality = 0;
         }
     }
 
     private static void UpdateItemQuality(Item item)
     {
-        if (item.Name != AgedBrie && item.Name != BackStage)
-        {
-            if (item.Quality > 0)
-            {
-                DecreaseQuality(item);
-            }
-        }
-        else
+        if (item.Name == AgedBrie)
         {
             if (item.Quality < MAX_QUALITY)
             {
                 IncreaseQuality(item);
-
-                if (item.Name == BackStage)
-                {
-                    if (item.SellIn <= 10)
-                    {
-                        if (item.Quality < MAX_QUALITY)
-                        {
-                            IncreaseQuality(item);
-                        }
-                    }
-
-                    if (item.SellIn <= 5)
-                    {
-                        if (item.Quality < MAX_QUALITY)
-                        {
-                            IncreaseQuality(item);
-                        }
-                    }
-                }
+            }
+        }
+        else
+        {
+            if (item.Quality > 0)
+            {
+                DecreaseQuality(item);
             }
         }
         DecreaseSellin(item);
@@ -69,16 +89,9 @@ public class GildedRose
         {
             if (item.Name != AgedBrie)
             {
-                if (item.Name != BackStage)
+                if (item.Quality > 0)
                 {
-                    if (item.Quality > 0)
-                    {
-                        DecreaseQuality(item);
-                    }
-                }
-                else
-                {
-                    item.Quality = 0;
+                    DecreaseQuality(item);
                 }
             }
             else
@@ -90,6 +103,7 @@ public class GildedRose
             }
         }
     }
+
 
     private static void UpdateSulfurasQuality(Item item)
     {
