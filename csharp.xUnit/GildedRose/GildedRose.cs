@@ -38,40 +38,11 @@ public class GildedRose
 
     private static void UpdateItemQuality(Item item)
     {
-        if (item.Name == BACKSTAGE)
+        if (item.Quality > MIN_QUALITY)
         {
-            if (item.Quality < MAX_QUALITY)
+            if (item.Name != SULFURAS)
             {
-                IncreaseQuality(item);
-
-                if (item.Name == BACKSTAGE)
-                {
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < MAX_QUALITY)
-                        {
-                            IncreaseQuality(item);
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < MAX_QUALITY)
-                        {
-                            IncreaseQuality(item);
-                        }
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (item.Quality > MIN_QUALITY)
-            {
-                if (item.Name != SULFURAS)
-                {
-                    DecreaseQuality(item);
-                }
+                DecreaseQuality(item);
             }
         }
 
@@ -82,11 +53,7 @@ public class GildedRose
 
         if (item.SellIn < 0)
         {
-            if (item.Name == BACKSTAGE)
-            {
-                item.Quality = 0;
-            }
-            else if (item.Quality > MIN_QUALITY && item.Name != SULFURAS)
+            if (item.Quality > MIN_QUALITY && item.Name != SULFURAS)
             {
 
                 DecreaseQuality(item);
