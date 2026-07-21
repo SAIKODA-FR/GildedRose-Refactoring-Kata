@@ -8,6 +8,7 @@ public class GildedRose
     private const string BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
     private const string SULFURAS = "Sulfuras, Hand of Ragnaros";
     private const int MAX_QUALITY = 50;
+    private const int MIN_QUALITY = 0;
 
     IList<Item> Items;
 
@@ -22,7 +23,7 @@ public class GildedRose
         {
             if (item.Name != AGED_BRIE && item.Name != BACKSTAGE)
             {
-                if (item.Quality > 0)
+                if (item.Quality > MIN_QUALITY)
                 {
                     if (item.Name != SULFURAS)
                     {
@@ -62,13 +63,13 @@ public class GildedRose
                 item.SellIn = item.SellIn - 1;
             }
 
-            if (item.SellIn < 0)
+            if (item.SellIn < MIN_QUALITY)
             {
                 if (item.Name != AGED_BRIE)
                 {
                     if (item.Name != BACKSTAGE)
                     {
-                        if (item.Quality > 0)
+                        if (item.Quality > MIN_QUALITY)
                         {
                             if (item.Name != SULFURAS)
                             {
