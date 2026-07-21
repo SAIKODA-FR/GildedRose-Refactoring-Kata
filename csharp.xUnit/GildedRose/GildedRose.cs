@@ -65,7 +65,14 @@ public class GildedRose
 
             if (item.SellIn < 0)
             {
-                if (item.Name != AGED_BRIE)
+                if (item.Name == AGED_BRIE)
+                {
+                    if (item.Quality < MAX_QUALITY)
+                    {
+                        IncreaseQuality(item);
+                    }
+                }
+                else
                 {
                     if (item.Name == BACKSTAGE)
                     {
@@ -80,13 +87,6 @@ public class GildedRose
                                 DecreaseQuality(item);
                             }
                         }
-                    }
-                }
-                else
-                {
-                    if (item.Quality < MAX_QUALITY)
-                    {
-                        IncreaseQuality(item);
                     }
                 }
             }
