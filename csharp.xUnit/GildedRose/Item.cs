@@ -6,7 +6,7 @@ public abstract class Item
     protected const int MIN_QUALITY = 0;
     public string Name { get; private set; }
     public int SellIn { get; private set; }
-    public int Quality { get; protected set; }
+    public int Quality { get; private set; }
 
     protected Item(string name, int sellIn, int quality)
     {
@@ -31,5 +31,10 @@ public abstract class Item
     }
 
     public abstract void UpdateQuality();
+
+    protected void SetMinimumQuality()
+    {
+        Quality = 0;
+    }
 
 }
