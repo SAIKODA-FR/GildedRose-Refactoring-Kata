@@ -21,17 +21,7 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
-            if (item.Name != AGED_BRIE && item.Name != BACKSTAGE)
-            {
-                if (item.Quality > MIN_QUALITY)
-                {
-                    if (item.Name != SULFURAS)
-                    {
-                        DecreaseQuality(item);
-                    }
-                }
-            }
-            else
+            if (item.Name == AGED_BRIE || item.Name == BACKSTAGE)
             {
                 if (item.Quality < MAX_QUALITY)
                 {
@@ -54,6 +44,16 @@ public class GildedRose
                                 IncreaseQuality(item);
                             }
                         }
+                    }
+                }
+            }
+            else
+            {
+                if (item.Quality > MIN_QUALITY)
+                {
+                    if (item.Name != SULFURAS)
+                    {
+                        DecreaseQuality(item);
                     }
                 }
             }
