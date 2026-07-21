@@ -44,16 +44,16 @@ public class GildedRose
     {
         if (item.Quality > MIN_QUALITY)
         {
-            DecreaseQuality(item);
+            item.DecreaseQuality();
         }
 
-        DecreaseSellIn(item);
+        item.DecreaseSellIn();
 
         if (item.SellIn < 0)
         {
             if (item.Quality > MIN_QUALITY)
             {
-                DecreaseQuality(item);
+                item.DecreaseQuality();
 
             }
         }
@@ -63,13 +63,13 @@ public class GildedRose
     {
         if (item.Quality < MAX_QUALITY)
         {
-            IncreaseQuality(item);
+            item.IncreaseQuality();
 
             if (item.SellIn < 11)
             {
                 if (item.Quality < MAX_QUALITY)
                 {
-                    IncreaseQuality(item);
+                    item.IncreaseQuality();
                 }
             }
 
@@ -77,12 +77,12 @@ public class GildedRose
             {
                 if (item.Quality < MAX_QUALITY)
                 {
-                    IncreaseQuality(item);
+                    item.IncreaseQuality();
                 }
             }
         }
 
-        DecreaseSellIn(item);
+        item.DecreaseSellIn();
 
         if (item.SellIn < 0)
         {
@@ -94,32 +94,17 @@ public class GildedRose
     {
         if (item.Quality < MAX_QUALITY)
         {
-            IncreaseQuality(item);
+            item.IncreaseQuality();
         }
 
-        DecreaseSellIn(item);
+        item.DecreaseSellIn();
 
         if (item.SellIn < 0)
         {
             if (item.Quality < MAX_QUALITY)
             {
-                IncreaseQuality(item);
+                item.IncreaseQuality();
             }
         }
-    }
-
-    private static void DecreaseSellIn(Item item)
-    {
-        item.SellIn = item.SellIn - 1;
-    }
-
-    private static void IncreaseQuality(Item item)
-    {
-        item.Quality = item.Quality + 1;
-    }
-
-    private static void DecreaseQuality(Item item)
-    {
-        item.Quality = item.Quality - 1;
     }
 }
