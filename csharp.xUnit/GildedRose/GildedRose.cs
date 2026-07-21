@@ -21,6 +21,10 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
+            if (item.Name == SULFURAS)
+            {
+                continue;
+            }
             if (item.Name == AGED_BRIE)
             {
                 UpdateAgedBrieQuality(item);
@@ -40,22 +44,15 @@ public class GildedRose
     {
         if (item.Quality > MIN_QUALITY)
         {
-            if (item.Name != SULFURAS)
-            {
-                DecreaseQuality(item);
-            }
+            DecreaseQuality(item);
         }
 
-        if (item.Name != SULFURAS)
-        {
-            DecreaseSellIn(item);
-        }
+        DecreaseSellIn(item);
 
         if (item.SellIn < 0)
         {
-            if (item.Quality > MIN_QUALITY && item.Name != SULFURAS)
+            if (item.Quality > MIN_QUALITY)
             {
-
                 DecreaseQuality(item);
 
             }
