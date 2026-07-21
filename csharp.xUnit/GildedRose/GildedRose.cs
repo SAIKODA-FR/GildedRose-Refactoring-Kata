@@ -76,15 +76,11 @@ public class GildedRose
                 {
                     item.Quality = 0;
                 }
-                else
+                else if (item.Quality > MIN_QUALITY && item.Name != SULFURAS)
                 {
-                    if (item.Quality > MIN_QUALITY)
-                    {
-                        if (item.Name != SULFURAS)
-                        {
-                            DecreaseQuality(item);
-                        }
-                    }
+
+                    DecreaseQuality(item);
+
                 }
             }
         }
