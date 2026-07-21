@@ -25,7 +25,7 @@ public class GildedRose
                 {
                     if (item.Name != SULFURAS)
                     {
-                        item.Quality = item.Quality - 1;
+                        DecreaseQuality(item);
                     }
                 }
             }
@@ -71,7 +71,7 @@ public class GildedRose
                         {
                             if (item.Name != SULFURAS)
                             {
-                                item.Quality = item.Quality - 1;
+                                DecreaseQuality(item);
                             }
                         }
                     }
@@ -89,5 +89,10 @@ public class GildedRose
                 }
             }
         }
+    }
+
+    private static void DecreaseQuality(Item item)
+    {
+        item.Quality = item.Quality - 1;
     }
 }
