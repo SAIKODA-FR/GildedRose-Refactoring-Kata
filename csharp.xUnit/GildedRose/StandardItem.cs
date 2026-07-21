@@ -1,11 +1,7 @@
 ﻿namespace GildedRoseKata
 {
-    internal class StandardItem : Item
+    internal class StandardItem(string name, int sellIn, int quality) : Item(name, sellIn, quality)
     {
-        public StandardItem(string name, int sellIn, int quality) : base(name, sellIn, quality)
-        {
-        }
-
         public override void UpdateQuality()
         {
             DecreaseQuality();

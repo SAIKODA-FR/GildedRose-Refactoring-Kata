@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GildedRoseKata
+﻿namespace GildedRoseKata
 {
-    internal class AgedBrieItem : Item
+    internal class AgedBrieItem(string name, int sellIn, int quality) : Item(name, sellIn, quality)
     {
-        public AgedBrieItem(string name, int sellIn, int quality) : base(name, sellIn, quality)
-        {
-        }
-
         public override void UpdateQuality()
         {
 

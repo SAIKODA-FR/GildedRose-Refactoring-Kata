@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GildedRoseKata
+﻿namespace GildedRoseKata
 {
-    internal class BackstageItem : Item
+    internal class BackstageItem(string name, int sellIn, int quality) : Item(name, sellIn, quality)
     {
-        public BackstageItem(string name, int sellIn, int quality) : base(name, sellIn, quality)
-        {
-        }
-
         public override void UpdateQuality()
         {
 
