@@ -48,7 +48,7 @@ public class GildedRose
 
         if (item.Name != SULFURAS)
         {
-            item.SellIn = item.SellIn - 1;
+            DecreaseSellIn(item);
         }
 
         if (item.SellIn < 0)
@@ -85,7 +85,7 @@ public class GildedRose
             }
         }
 
-        item.SellIn = item.SellIn - 1;
+        DecreaseSellIn(item);
 
         if (item.SellIn < 0)
         {
@@ -100,9 +100,7 @@ public class GildedRose
             IncreaseQuality(item);
         }
 
-
-        item.SellIn = item.SellIn - 1;
-
+        DecreaseSellIn(item);
 
         if (item.SellIn < 0)
         {
@@ -111,6 +109,11 @@ public class GildedRose
                 IncreaseQuality(item);
             }
         }
+    }
+
+    private static void DecreaseSellIn(Item item)
+    {
+        item.SellIn = item.SellIn - 1;
     }
 
     private static void IncreaseQuality(Item item)
