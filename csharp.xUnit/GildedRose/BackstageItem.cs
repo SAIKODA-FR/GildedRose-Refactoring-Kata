@@ -12,25 +12,17 @@ namespace GildedRoseKata
 
         public override void UpdateQuality()
         {
-            if (Quality < MAX_QUALITY)
+
+            IncreaseQuality();
+
+            if (SellIn < 11)
             {
                 IncreaseQuality();
+            }
 
-                if (SellIn < 11)
-                {
-                    if (Quality < MAX_QUALITY)
-                    {
-                        IncreaseQuality();
-                    }
-                }
-
-                if (SellIn < 6)
-                {
-                    if (Quality < MAX_QUALITY)
-                    {
-                        IncreaseQuality();
-                    }
-                }
+            if (SellIn < 6)
+            {
+                IncreaseQuality();
             }
 
             DecreaseSellIn();

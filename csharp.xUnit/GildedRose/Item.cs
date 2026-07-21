@@ -22,7 +22,10 @@ public abstract class Item
 
     protected void IncreaseQuality()
     {
-        Quality = Quality + 1;
+        if (Quality < MAX_QUALITY)
+        {
+            Quality = Quality + 1;
+        }
     }
 
     protected void DecreaseQuality()
