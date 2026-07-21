@@ -11,31 +11,31 @@ public class Program
 
         IList<Item> items = new List<Item>
         {
-            new StandardItem {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-            new AgedBrieItem {Name = "Aged Brie", SellIn = 2, Quality = 0},
-            new StandardItem {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-            new LegendaryItem {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-            new LegendaryItem {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
+            new StandardItem ("+5 Dexterity Vest", 10,  20),
+            new AgedBrieItem ("Aged Brie", 2,  0),
+            new StandardItem ("Elixir of the Mongoose", 5,  7),
+            new LegendaryItem ("Sulfuras, Hand of Ragnaros", 0,  80),
+            new LegendaryItem ("Sulfuras, Hand of Ragnaros", -1,  80),
             new BackstageItem
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 15,
-                Quality = 20
-            },
+            (
+                "Backstage passes to a TAFKAL80ETC concert",
+                15,
+                 20
+            ),
             new BackstageItem
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 10,
-                Quality = 49
-            },
+            (
+                "Backstage passes to a TAFKAL80ETC concert",
+                10,
+                 49
+            ),
             new BackstageItem
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 5,
-                Quality = 49
-            },
+            (
+                "Backstage passes to a TAFKAL80ETC concert",
+                5,
+                 49
+            ),
             // this conjured item does not work properly yet
-            new StandardItem {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+            new StandardItem ("Conjured Mana Cake", 3,  6)
         };
 
         var app = new GildedRose(items);
