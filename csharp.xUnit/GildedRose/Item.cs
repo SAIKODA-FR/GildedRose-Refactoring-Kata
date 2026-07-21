@@ -30,7 +30,10 @@ public abstract class Item
 
     protected void DecreaseQuality()
     {
-        Quality = Quality - 1;
+        if (Quality > MIN_QUALITY)
+        {
+            Quality = Quality - 1;
+        }
     }
 
     public abstract void UpdateQuality();
