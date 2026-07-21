@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRoseKata;
 
@@ -9,8 +10,8 @@ public class Program
     {
         Console.WriteLine("OMGHAI!");
 
-        IList<Item> items = new List<Item>
-        {
+        Item[] items =
+        [
             new StandardItem ("+5 Dexterity Vest", 10,  20),
             new AgedBrieItem ("Aged Brie", 2,  0),
             new StandardItem ("Elixir of the Mongoose", 5,  7),
@@ -36,7 +37,7 @@ public class Program
             ),
             // this conjured item does not work properly yet
             new StandardItem ("Conjured Mana Cake", 3,  6)
-        };
+        ];
 
         var app = new GildedRose(items);
 
@@ -50,7 +51,7 @@ public class Program
         {
             Console.WriteLine("-------- day " + i + " --------");
             Console.WriteLine("name, sellIn, quality");
-            for (var j = 0; j < items.Count; j++)
+            for (var j = 0; j < items.Count(); j++)
             {
                 Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
             }

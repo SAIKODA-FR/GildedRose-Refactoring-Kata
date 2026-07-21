@@ -4,9 +4,9 @@ namespace GildedRoseKata;
 
 public class GildedRose
 {
-    IList<Item> Items;
+    IReadOnlyCollection<Item> Items;
 
-    public GildedRose(IList<Item> Items)
+    public GildedRose(IReadOnlyCollection<Item> Items)
     {
         this.Items = Items;
     }
