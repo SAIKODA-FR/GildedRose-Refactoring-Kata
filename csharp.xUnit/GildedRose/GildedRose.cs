@@ -21,71 +21,94 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
-            if (item.Name == AGED_BRIE || item.Name == BACKSTAGE)
+            if (item.Name == AGED_BRIE)
             {
-                if (item.Quality < MAX_QUALITY)
-                {
-                    IncreaseQuality(item);
-
-                    if (item.Name == BACKSTAGE)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < MAX_QUALITY)
-                            {
-                                IncreaseQuality(item);
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < MAX_QUALITY)
-                            {
-                                IncreaseQuality(item);
-                            }
-                        }
-                    }
-                }
-            }
-            else
+                UpdateAgedBrieQuality(item);
+            } else
             {
-                if (item.Quality > MIN_QUALITY)
-                {
-                    if (item.Name != SULFURAS)
-                    {
-                        DecreaseQuality(item);
-                    }
-                }
-            }
-
-            if (item.Name != SULFURAS)
-            {
-                item.SellIn = item.SellIn - 1;
-            }
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name == AGED_BRIE)
-                {
-                    if (item.Quality < MAX_QUALITY)
-                    {
-                        IncreaseQuality(item);
-                    }
-                }
-                else if (item.Name == BACKSTAGE)
-                {
-                    item.Quality = 0;
-                }
-                else if (item.Quality > MIN_QUALITY && item.Name != SULFURAS)
-                {
-
-                    DecreaseQuality(item);
-
-                }
+                UpdateItemQuality(item);
             }
         }
     }
 
+    private static void UpdateItemQuality(Item item)
+    {
+        if (item.Name == BACKSTAGE)
+        {
+            if (item.Quality < MAX_QUALITY)
+            {
+                IncreaseQuality(item);
+
+                if (item.Name == BACKSTAGE)
+                {
+                    if (item.SellIn < 11)
+                    {
+                        if (item.Quality < MAX_QUALITY)
+                        {
+                            IncreaseQuality(item);
+                        }
+                    }
+
+                    if (item.SellIn < 6)
+                    {
+                        if (item.Quality < MAX_QUALITY)
+                        {
+                            IncreaseQuality(item);
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (item.Quality > MIN_QUALITY)
+            {
+                if (item.Name != SULFURAS)
+                {
+                    DecreaseQuality(item);
+                }
+            }
+        }
+
+        if (item.Name != SULFURAS)
+        {
+            item.SellIn = item.SellIn - 1;
+        }
+
+        if (item.SellIn < 0)
+        {
+            if (item.Name == BACKSTAGE)
+            {
+                item.Quality = 0;
+            }
+            else if (item.Quality > MIN_QUALITY && item.Name != SULFURAS)
+            {
+
+                DecreaseQuality(item);
+
+            }
+        }
+    }
+
+    private static void UpdateAgedBrieQuality(Item item)
+    {
+        if (item.Quality < MAX_QUALITY)
+        {
+            IncreaseQuality(item);
+        }
+
+
+        item.SellIn = item.SellIn - 1;
+
+
+        if (item.SellIn < 0)
+        {
+            if (item.Quality < MAX_QUALITY)
+            {
+                IncreaseQuality(item);
+            }
+        }
+    }
 
     private static void IncreaseQuality(Item item)
     {
