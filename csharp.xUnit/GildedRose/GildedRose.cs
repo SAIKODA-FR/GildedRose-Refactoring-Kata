@@ -24,7 +24,12 @@ public class GildedRose
             if (item.Name == AGED_BRIE)
             {
                 UpdateAgedBrieQuality(item);
-            } else
+            }
+            else if (item.Name == BACKSTAGE)
+            {
+                UpdateBackstageQuality(item);
+            }
+            else
             {
                 UpdateItemQuality(item);
             }
@@ -87,6 +92,37 @@ public class GildedRose
                 DecreaseQuality(item);
 
             }
+        }
+    }
+
+    private static void UpdateBackstageQuality(Item item)
+    {
+        if (item.Quality < MAX_QUALITY)
+        {
+            IncreaseQuality(item);
+
+            if (item.SellIn < 11)
+            {
+                if (item.Quality < MAX_QUALITY)
+                {
+                    IncreaseQuality(item);
+                }
+            }
+
+            if (item.SellIn < 6)
+            {
+                if (item.Quality < MAX_QUALITY)
+                {
+                    IncreaseQuality(item);
+                }
+            }
+        }
+
+        item.SellIn = item.SellIn - 1;
+
+        if (item.SellIn < 0)
+        {
+            item.Quality = 0;
         }
     }
 
