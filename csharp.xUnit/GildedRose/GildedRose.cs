@@ -69,7 +69,7 @@ public class GildedRose
                 {
                     if (item.Name == BACKSTAGE)
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        item.Quality = 0;
                     }
                     else
                     {
