@@ -72,26 +72,24 @@ public class GildedRose
                         IncreaseQuality(item);
                     }
                 }
+                else if (item.Name == BACKSTAGE)
+                {
+                    item.Quality = 0;
+                }
                 else
                 {
-                    if (item.Name == BACKSTAGE)
+                    if (item.Quality > MIN_QUALITY)
                     {
-                        item.Quality = 0;
-                    }
-                    else
-                    {
-                        if (item.Quality > MIN_QUALITY)
+                        if (item.Name != SULFURAS)
                         {
-                            if (item.Name != SULFURAS)
-                            {
-                                DecreaseQuality(item);
-                            }
+                            DecreaseQuality(item);
                         }
                     }
                 }
             }
         }
     }
+
 
     private static void IncreaseQuality(Item item)
     {
